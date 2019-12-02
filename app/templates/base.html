@@ -1,0 +1,119 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="../static/css/main.css">
+{% endblock %}
+
+{% block scripts %}
+    {{ super() }}
+{% endblock %}
+
+
+
+{% block title %}
+     Secret Crisis Comics
+{% endblock %}
+
+{% block navbar %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="{{ url_for('index') }}">Twitter</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+
+            {% if title == 'Home' %}
+                <li class="nav-item active">
+            {% else %}
+                <li class="nav-item">
+            {% endif %}
+
+            <a class="nav-link" href="{{ url_for('index') }}">Home </a>
+          </li>
+
+          {% if title == 'Title' %}
+              <li class="nav-item active">
+          {% else %}
+              <li class="nav-item">
+          {% endif %}
+            <a class="nav-link" href="#">Title</a>
+          </li>
+
+          <!-- Insert "if current user" Here -->
+              {% if title == 'Profile' %}
+                  <li class="nav-item active">
+              {% else %}
+                  <li class="nav-item">
+              {% endif %}
+                <a class="nav-link" href="#">Profile</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="#">Logout</a>
+              </li>
+
+            <!-- else -->
+
+              {% if title == 'Login' %}
+                  <li class="nav-item active">
+              {% else %}
+                  <li class="nav-item">
+              {% endif %}
+                <a class="nav-link" href="#">Login</a>
+              </li>
+
+              {% if title == 'Register' %}
+                  <li class="nav-item active">
+              {% else %}
+                  <li class="nav-item">
+              {% endif %}
+                <a class="nav-link" href="#">Register</a>
+              </li>
+
+              {% if title == 'Contact Us' %}
+                  <li class="nav-item active">
+              {% else %}
+                  <li class="nav-item">
+              {% endif %}
+                <a class="nav-link" href="#">Contact</a>
+              </li>
+          <!-- endif -->
+
+        </ul>
+      </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <header>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <script type="text/javascript">
+                        alert('{{ message }}');
+                    </script>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </header>
+
+    <main>
+        {% block app_content %}{% endblock %}
+    </main>
+
+    <footer>
+        <div class="row">
+            <div class="col-md-4">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam ad accusamus pariatur quaerat voluptatem deserunt excepturi soluta aliquam temporibus, est beatae possimus, quidem voluptatum. Deleniti nulla praesentium optio quibusdam ut.</p>
+            </div>
+            <div class="col-md-4">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum nisi, aliquam obcaecati et harum culpa ea, sit repellendus. Ratione, et voluptate placeat, cupiditate nam quaerat. Accusantium pariatur asperiores expedita iste.</p>
+            </div>
+            <div class="col-md-4">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci quos architecto tenetur odio, aut, fugiat dolore ipsum deserunt totam rerum maxime ab enim qui molestias libero pariatur alias doloremque amet.</p>
+            </div>
+        <!-- </div>> ends row -->
+    </footer>
+{% endblock %}
