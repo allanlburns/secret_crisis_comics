@@ -3,5 +3,16 @@
 {% block app_content %}
 <div class="container">
     <h1>Products! Buy some stuff!</h1>
+    <div class="row">
+        {% for product in products %}
+        <h1>{{ product.name }}</h1>
+        <p>{{ product.price }}</p>
+        <p>{{ product.description }}</p>
+        {% endfor %}
+    </div>
 </div>
+
+
+
+
 {% endblock %}

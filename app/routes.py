@@ -9,4 +9,5 @@ def index():
 
 @app.route('/products', methods={'GET'})
 def products():
-    return render_template('index.html', title="Products")
+    products = Product.query.all()
+    return render_template('products.html', title="Products", products=products)
