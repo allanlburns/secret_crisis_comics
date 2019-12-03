@@ -15,3 +15,36 @@ h1 {
 #navbar_logo {
     max-width: 15%;
 }
+
+#products > .col-md-4 {
+    margin-top: 50px;
+}
+
+.card {
+    padding: 25px;
+}
+
+.card-img {
+    display: block;
+    margin: 25px auto;
+}
+
+.card-title {
+    font-weight: bold;
+    font-size: 120%;
+}
+
+.card-text {
+    min-height: 75px;
+}
+
+.card-subtitle {
+    font-size: 90%;
+    font-style: italic;
+}
+
+.card > button {
+    display: block;
+    margin: 25px auto;
+    width: 80%
+}
