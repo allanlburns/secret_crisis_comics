@@ -17,7 +17,7 @@
 
 {% block navbar %}
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="{{ url_for('index') }}">Secret Crisis Comcis</a>
+      <a class="navbar-brand" href="{{ url_for('index') }}">Secret Crisis Comics</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -41,6 +41,16 @@
             <a class="nav-link" href="#">New Arrivals</a>
           </li>
 
+          {% if title == 'Products' %}
+              <li class="nav-item active">
+          {% else %}
+              <li class="nav-item">
+          {% endif %}
+            <a class="nav-link" href="#">Products</a>
+          </li>
+
+
+
           <!-- Insert "if current user" Here -->
               {% if title == 'Profile' %}
                   <li class="nav-item active">
@@ -48,6 +58,14 @@
                   <li class="nav-item">
               {% endif %}
                 <a class="nav-link" href="#">Profile</a>
+              </li>
+
+              {% if title == 'Pull List' %}
+                  <li class="nav-item active">
+              {% else %}
+                  <li class="nav-item">
+              {% endif %}
+                <a class="nav-link" href="#">Pull List</a>
               </li>
 
               <li class="nav-item">
