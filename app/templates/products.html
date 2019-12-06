@@ -10,8 +10,8 @@
             <p>{{ product.description }}</p> -->
         <div class="col-md-4">
             <div class="card">
-                <img src="http://placehold.it/250x250" alt="{{ product.title }}" class="card-img">
-                <div class="card-title">{{ product.name[:40] }}...</div>
+                <img src="{{ product.image }}" height="400" width="300" alt="{{ product.title }}" class="card-img">
+                <div class="card-title">{{ product.name[:30] }}...</div>
                 <div class="card-subtitle">${{ product.price }}</div>
                 <div class="card-text">
                     <p>{{ product.description[:50] }}...</p>

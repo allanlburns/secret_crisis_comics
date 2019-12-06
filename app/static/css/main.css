@@ -8,6 +8,16 @@ h1 {
     color: black;
 }
 
+#navbar-background {
+    background-color: #0000ff;
+}
+
+a {
+    color: #ffffff;
+}
+
+
+
 #main_page_logo {
     max-width: 10%;
 }
