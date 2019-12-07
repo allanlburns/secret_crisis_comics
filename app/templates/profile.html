@@ -1,0 +1,16 @@
+{% import 'bootstrap/wtf.html' as wtf %}
+{% extends 'base.html' %}
+
+{% block app_content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="http://placehold.it/250x250" alt="Profile Picture" class="card-img">
+                <div class="card-title">{{ person.first_name }} {{ person.last_name }}</div>
+                <div class="card-subtitle">@{{ person.username }}</div>
+            </div>
+        </div> <!-- ends col 4 -->
+    </div> <!-- ends row -->
+</div><!-- ends container -->
+{% endblock %}

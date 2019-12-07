@@ -51,7 +51,7 @@
 
 
 
-          <!-- Insert "if current user" Here -->
+            {% if current_user.is_authenticated %}
               {% if title == 'Profile' %}
                   <li class="nav-item active">
               {% else %}
@@ -69,17 +69,17 @@
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="#">Logout</a>
+                <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
               </li>
 
-            <!-- else -->
+            {% else %}
 
               {% if title == 'Login' %}
                   <li class="nav-item active">
               {% else %}
                   <li class="nav-item">
               {% endif %}
-                <a class="nav-link" href="#">Login</a>
+                <a class="nav-link" href="{{ url_for('login') }}">Login</a>
               </li>
 
               {% if title == 'Register' %}
@@ -87,17 +87,9 @@
               {% else %}
                   <li class="nav-item">
               {% endif %}
-                <a class="nav-link" href="#">Register</a>
+                <a class="nav-link" href="{{ url_for('register') }}">Register</a>
               </li>
-
-              {% if title == 'Contact Us' %}
-                  <li class="nav-item active">
-              {% else %}
-                  <li class="nav-item">
-              {% endif %}
-                <a class="nav-link" href="#">Contact</a>
-              </li>
-          <!-- endif -->
+            {% endif %}
 
         </ul>
       </div>
@@ -121,17 +113,22 @@
         {% block app_content %}{% endblock %}
     </main>
 
-    <footer>
+    <!-- <footer>
         <div class="row">
-            <div class="col-md-4">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam ad accusamus pariatur quaerat voluptatem deserunt excepturi soluta aliquam temporibus, est beatae possimus, quidem voluptatum. Deleniti nulla praesentium optio quibusdam ut.</p>
+            <div class="col-md-2">
+                <ul>
+                    <li>Contact Us</li>
+                    <li>Secret Crisis Comics</li>
+                    <li>1161 South Main Street</li>
+                    <li>Chelsea, MI 48118</li>
+                    <li>(734) 593-7110</li>
+                </ul>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum nisi, aliquam obcaecati et harum culpa ea, sit repellendus. Ratione, et voluptate placeat, cupiditate nam quaerat. Accusantium pariatur asperiores expedita iste.</p>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-5">
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci quos architecto tenetur odio, aut, fugiat dolore ipsum deserunt totam rerum maxime ab enim qui molestias libero pariatur alias doloremque amet.</p>
             </div>
-        <!-- </div>> ends row -->
-    </footer>
+    </footer> -->
 {% endblock %}
