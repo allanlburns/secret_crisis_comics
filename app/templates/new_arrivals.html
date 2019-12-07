@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+<div class="container">
+    <h1>This Week's New Arrivals</h1>
+    {% for new_arrival in new_arrivals['comics'] %}
+    <p>{{ new_arrival['title'] }}</p>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,9 +1,10 @@
 from app import app, db
-from flask import render_template, url_for, redirect, flash
+from flask import render_template, url_for, redirect, flash, jsonify
 from app.models import Product, User
 from app.forms import LoginForm, RegisterForm
 from flask_login import login_user, logout_user, login_required, current_user
 import datetime
+import requests
 
 @app.route('/')
 @app.route('/index', methods={'GET'})
@@ -15,6 +16,23 @@ def index():
 def products():
     products = Product.query.all()
     return render_template('products.html', title="Products", products=products)
+
+
+
+
+
+@app.route('/new_arrivals', methods={'GET'})
+def new_arrivals():
+
+    URL = 'http://api.shortboxed.com/comics/v1/new'
+    r = requests.get(URL)
+    new_arrivals = r.json()
+
+    return render_template('new_arrivals.html', new_arrivals=new_arrivals)
+
+
+
+
 
 @app.route('/login', methods={'GET', 'POST'})
 def login():
