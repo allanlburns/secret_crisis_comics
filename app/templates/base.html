@@ -7,6 +7,11 @@
 
 {% block scripts %}
     {{ super() }}
+    <script>
+        function addItem(id) {
+            alert(id);
+        }
+    </script>
 {% endblock %}
 
 
@@ -89,7 +94,11 @@
               {% endif %}
                 <a class="nav-link" href="{{ url_for('register') }}">Register</a>
               </li>
+
             {% endif %}
+
+              <li><a class="nav-link" id="checkout-link" href="{{ url_for('products_view') }}">View Cart</a></li>
+
 
         </ul>
       </div>
@@ -101,9 +110,9 @@
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for message in messages %}
-                    <script type="text/javascript">
-                        alert('{{ message }}');
-                    </script>
+                <div class="alert alert-primary" role="alert">
+                    {{ message }}
+                </div>
                 {% endfor %}
             {% endif %}
         {% endwith %}

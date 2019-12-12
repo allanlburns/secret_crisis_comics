@@ -16,7 +16,7 @@
                 <div class="card-text">
                     <p>{{ product.description[:50] }}...</p>
                 </div>
-                <button onClick="console.log({{ product.id }})" class="btn btn-primary">Add to Cart</button>
+                <a href="{{ url_for('productsAdd', id=product.id) }}" class="btn btn-primary">Add to Cart</a>
             </div> <!-- ends card -->
         </div> <!-- ends col 4-->
         {% endfor %}

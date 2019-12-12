@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+<div class="container">
+    <h1>Cart Summary</h1>
+    <div class="row ProductsTable">
+        <div className="col-md-12">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in session['cart'] %}
+                    <tr>
+                        <td id="cart-prod-name">{{ item.name }}</td>
+                        <td id="cart-prod-quantity">1</td> <!-- this is hard coded. Figure out count functionality -->
+                        <td id="cart-prod-price">{{ item.price }}</td>
+                        <td id="cart-prod-remove><a href=""><a href="">X</a></td>
+
+                    </tr>
+                    {% endfor %}
+                    <tr class="table-light">
+                        <td></td>
+                        <td>Total: </td>
+                        <td>${{ total }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <button class="btn btn-primary" type="button" name="checkout">Checkout</button>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+{% endblock %}
