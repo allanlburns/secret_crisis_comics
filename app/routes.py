@@ -1,10 +1,24 @@
 from app import app, db
-from flask import render_template, url_for, redirect, flash, jsonify, session
+from flask import render_template, url_for, redirect, flash, jsonify, session, request
 from app.models import Product, User
 from app.forms import LoginForm, RegisterForm
 from flask_login import login_user, logout_user, login_required, current_user
 import datetime
 import requests
+import stripe
+
+
+###########################################################################
+# move to main.py and import to routes?
+###########################################################################
+pub_key = 'pk_test_nZ9aGA33hUfAXBn3qvQChkpv00sJRtdxjb'
+# hide live secret key in production. Okay for test key to be exposed.
+secret_key = 'sk_test_gSOSsXaO540JMnIjaEDAB2Bx00H5PWQtRG'
+
+stripe.api_key = secret_key
+
+###########################################################################
+
 
 def checkCartSession():
     try:
@@ -50,20 +64,46 @@ def productsAdd(id):
 
     flash(f"{item['name']} added to cart")
 
-
-
     return redirect(url_for('products'))
 
 @app.route('/products/view', methods=['GET', 'POST'])
 def products_view():
-
     total = 0
     for item in session['cart']:
         total += item['price']
 
     total = round(total, 2)
 
-    return render_template('products_view.html', total=total)
+    return render_template('products_view.html', total=total, pub_key=pub_key)
+
+@app.route('/products/pay', methods=['POST'])
+def products_pay():
+
+    ###########################################
+    # refactor duplicate code. Use sessions?
+    ###########################################
+    total = 0
+    for item in session['cart']:
+        total += item['price']
+
+    total = round(total, 2)
+    stripe_total = int(total * 100)
+
+    ###########################################
+
+    # create customer
+    customer = stripe.Customer.create(email=request.form['stripeEmail'], source=request.form['stripeToken'])
+
+    # charge the customer
+    charge = stripe.Charge.create(
+        customer=customer.id,
+        amount=stripe_total,
+        currency='usd',
+        description='Order from Secret Crisis Comics'
+    )
+
+    flash("Thank you for your order!")
+    return redirect(url_for('index'))
 
 @app.route('/new_arrivals', methods={'GET'})
 def new_arrivals():
@@ -73,10 +113,6 @@ def new_arrivals():
     new_arrivals = r.json()
 
     return render_template('new_arrivals.html', new_arrivals=new_arrivals)
-
-
-
-
 
 @app.route('/login', methods={'GET', 'POST'})
 def login():

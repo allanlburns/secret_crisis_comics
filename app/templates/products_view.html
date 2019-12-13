@@ -32,7 +32,21 @@
                 </tbody>
             </table>
 
-            <button class="btn btn-primary" type="button" name="checkout">Checkout</button>
+            <!-- <button class="btn btn-primary" type="button" name="checkout">Checkout</button> -->
+            {% if total %}
+                <form action="{{ url_for('products_pay')}}" method="POST">
+                    <script
+                        src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="{{ pub_key }}"
+                        data-amount="{{ stripe_total }}"
+                        data-name="Secret Crisis Comics"
+                        data-description="Widget"
+                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                        data-locale="auto">
+                    </script>
+                </form>
+
+
+            {% endif %}
         </div>
 
     </div>
