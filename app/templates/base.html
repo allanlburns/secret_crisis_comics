@@ -7,11 +7,6 @@
 
 {% block scripts %}
     {{ super() }}
-    <script>
-        function addItem(id) {
-            alert(id);
-        }
-    </script>
 {% endblock %}
 
 
@@ -106,38 +101,22 @@
 {% endblock %}
 
 {% block content %}
-    <header>
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                {% for message in messages %}
-                <div class="alert alert-primary" role="alert">
-                    {{ message }}
-                </div>
-                {% endfor %}
-            {% endif %}
-        {% endwith %}
-    </header>
+        <header>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-primary" role="alert">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </header>
 
-    <main>
-        {% block app_content %}{% endblock %}
-    </main>
+        <main>
+            <div class="container">
+                {% block app_content %}{% endblock %}
+            </div>
+        </main>
 
-    <!-- <footer>
-        <div class="row">
-            <div class="col-md-2">
-                <ul>
-                    <li>Contact Us</li>
-                    <li>Secret Crisis Comics</li>
-                    <li>1161 South Main Street</li>
-                    <li>Chelsea, MI 48118</li>
-                    <li>(734) 593-7110</li>
-                </ul>
-            </div>
-            <div class="col-md-5">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum nisi, aliquam obcaecati et harum culpa ea, sit repellendus. Ratione, et voluptate placeat, cupiditate nam quaerat. Accusantium pariatur asperiores expedita iste.</p>
-            </div>
-            <div class="col-md-5">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci quos architecto tenetur odio, aut, fugiat dolore ipsum deserunt totam rerum maxime ab enim qui molestias libero pariatur alias doloremque amet.</p>
-            </div>
-    </footer> -->
 {% endblock %}

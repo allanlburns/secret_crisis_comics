@@ -9,6 +9,21 @@ h1 {
     color: black;
 }
 
+h3 {
+    text-align: center;
+}
+
+#hours {
+    padding-top: 120px;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+#hours-list {
+    list-style: none;
+    padding-left: 0;
+}
+
 #navbar-background {
     background-color: #0000ff;
 }
@@ -24,7 +39,9 @@ a {
 
 
 #main_page_logo {
-    max-width: 10%;
+    max-width: 100%;
+    padding-right: 0;
+    margin-right: 0;
 }
 
 #navbar_logo {

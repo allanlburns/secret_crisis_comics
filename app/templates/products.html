@@ -1,16 +1,15 @@
 {% extends 'base.html' %}
 
 {% block app_content %}
-<div class="container">
     <h1>Products! Buy some stuff!</h1>
     <div class="row" id="products">
         {% for product in products %}
         <!-- <h1>{{ product.name }}</h1>
             <p>{{ product.price }}</p>
             <p>{{ product.description }}</p> -->
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="card">
-                <img src="{{ product.image }}" height="400" width="300" alt="{{ product.title }}" class="card-img">
+                <img src="{{ product.image }}" height="300" width="150" alt="{{ product.title }}" class="card-img">
                 <div class="card-title">{{ product.name[:30] }}...</div>
                 <div class="card-subtitle">${{ product.price }}</div>
                 <div class="card-text">
@@ -21,7 +20,6 @@
         </div> <!-- ends col 4-->
         {% endfor %}
     </div>
-</div>
 
 
 
