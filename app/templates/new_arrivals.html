@@ -2,9 +2,72 @@
 
 {% block app_content %}
 <div class="container">
-    <h1>This Week's New Arrivals</h1>
-    {% for new_arrival in new_arrivals['comics'] %}
-    <p>{{ new_arrival['title'] }}</p>
-    {% endfor %}
+    <h1>This Week's New Arrivals (Still Under Construction)</h1>
+    <div class="row">
+        <div class="col-md-3">
+            <h3>Marvel</h3>
+            {% for new_arrival in new_arrivals['comics'] %}
+            {% if new_arrival['publisher'] == "MARVEL COMICS" %}
+            <p>{{ new_arrival['title'] }}</p>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div class="col-md-3">
+            <h3>DC</h3>
+            {% for new_arrival in new_arrivals['comics'] %}
+            {% if new_arrival['publisher'] == "DC COMICS" %}
+            <p>{{ new_arrival['title'] }}</p>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div class="col-md-3">
+            <h3>Image</h3>
+            {% for new_arrival in new_arrivals['comics'] %}
+            {% if new_arrival['publisher'] == "IMAGE COMICS" %}
+            <p>{{ new_arrival['title'] }}</p>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div class="col-md-3">
+            <h3>Valiant</h3>
+            {% for new_arrival in new_arrivals['comics'] %}
+            {% if new_arrival['publisher'] == "VALIANT ENTERTAINMENT LLC" %}
+            <p>{{ new_arrival['title'] }}</p>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div class="col-md-3">
+            <h3>IDW</h3>
+            {% for new_arrival in new_arrivals['comics'] %}
+            {% if new_arrival['publisher'] == "IDW PUBLISHING" %}
+            <p>{{ new_arrival['title'] }}</p>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div class="col-md-3">
+            <h3>Boom!</h3>
+            {% for new_arrival in new_arrivals['comics'] %}
+            {% if new_arrival['publisher'] == "BOOM! STUDIOS" %}
+            <p>{{ new_arrival['title'] }}</p>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div class="col-md-3">
+            <h3>Dark Horse</h3>
+            {% for new_arrival in new_arrivals['comics'] %}
+            {% if new_arrival['publisher'] == "DARK HORSE COMICS" %}
+            <p>{{ new_arrival['title'] }}</p>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div class="col-md-3">
+            <h3>Archie</h3>
+            {% for new_arrival in new_arrivals['comics'] %}
+            {% if new_arrival['publisher'] == "ARCHIE COMIC PUBLICATIONS" %}
+            <p>{{ new_arrival['title'] }}</p>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
 </div>
 {% endblock %}

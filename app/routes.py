@@ -97,7 +97,7 @@ def products_pay():
     # charge the customer
     charge = stripe.Charge.create(
         customer=customer.id,
-        amount=stripe_total,
+        amount=int(stripe_total),
         currency='usd',
         description='Order from Secret Crisis Comics'
     )
