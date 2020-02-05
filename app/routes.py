@@ -49,6 +49,12 @@ def products():
     print(session['cart'])
     return render_template('products.html', title="Products", products=products)
 
+@app.route('/products/<id>', methods=['GET'])
+def product(id):
+    product = Product.query.get(id)
+
+    return render_template('product.html', title="Product", product=product, id=id)
+
 @app.route('/products/add/<id>', methods=['GET', 'POST'])
 def productsAdd(id):
     # checkCartSession()
@@ -131,7 +137,7 @@ def login():
         #if user exists and credentials are correct, log them in
         login_user(user)
         flash(f"You have been logged in.")
-        return redirect(url_for('profile', username=current_user.username))
+        return redirect(url_for('index', username=current_user.username))
 
     return render_template('form.html', form=form, title='Login')
 

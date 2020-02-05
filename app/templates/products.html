@@ -9,8 +9,10 @@
             <p>{{ product.description }}</p> -->
         <div class="col-md-3">
             <div class="card">
-                <img src="{{ product.image }}" height="300" width="150" alt="{{ product.title }}" class="card-img">
-                <div class="card-title">{{ product.name[:30] }}...</div>
+                <!-- <a href="url_for('product'<id>)"> -->
+                    <img src="{{ product.image }}" height="300" width="150" alt="{{ product.title }}" class="card-img">
+                    <div class="card-title">{{ product.name[:25] }}...</div>
+                <!-- </a> -->
                 <div class="card-subtitle">${{ product.price }}</div>
                 <div class="card-text">
                     <p>{{ product.description[:50] }}...</p>

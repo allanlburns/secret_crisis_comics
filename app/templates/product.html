@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+    <h1>{{ product.name }}</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <img src="{{ product.image }}">
+            </div> <!-- ends card -->
+        </div> <!-- ends col 6-->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-subtitle">${{ product.price }}</div>
+                <div class="card-text">
+                    <p>{{ product.description }}</p>
+                </div>
+                <a href="{{ url_for('productsAdd', id=product.id) }}" class="btn btn-primary">Add to Cart</a>
+            </div> <!-- ends card -->
+        </div>
+    </div>
+
+{% endblock %}
